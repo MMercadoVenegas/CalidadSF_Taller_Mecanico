@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Trabajos - Taller Mecánico</title>
+</head>
+<body>
+    <h1>Gestión de Trabajos - Taller Mecánico</h1>
+
+    <!-- Formulario para agregar un nuevo trabajo -->
+    <form id="formulario-trabajo">
+        <label for="nombre-vehiculo">Nombre del Vehículo:</label>
+        <input type="text" id="nombre-vehiculo" name="nombre-vehiculo" required>
+        
+        <label for="tipo-trabajo">Tipo de Trabajo:</label>
+        <select id="tipo-trabajo" name="tipo-trabajo">
+            <option value="Mantenimiento">Mantenimiento</option>
+            <option value="Reparación">Reparación</option>
+            <option value="Personalizado">Personalizado</option>
+        </select>
+
+        <label for="descripcion">Descripción del Trabajo:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea>
+
+        <label for="fecha-inicio">Fecha de Inicio:</label>
+        <input type="date" id="fecha-inicio" name="fecha-inicio" required>
+
+        <label for="fecha-fin">Fecha de Fin Estimada:</label>
+        <input type="date" id="fecha-fin" name="fecha-fin" required>
+
+        <button type="submit">Agregar Trabajo</button>
+    </form>
+
+    <!-- Lista de trabajos existentes -->
+    <h2>Lista de Trabajos</h2>
+    <ul id="lista-trabajos">
+<!-- Script para la gestión de trabajos -->
+<script>
+    // Define un array para almacenar los trabajos
+    const trabajos = [];
+
+    // Función para agregar un trabajo al array y mostrarlo en la lista
+    function agregarTrabajo(nombre, tipo, descripcion, fechaInicio, fechaFin) {
+        const nuevoTrabajo = {
+            nombre: nombre,
+            tipo: tipo,
+            descripcion: descripcion,
+            fechaInicio: fechaInicio,
+            fechaFin: fechaFin
+        };
+
+        trabajos.push(nuevoTrabajo);
+
+        // Actualiza la lista de trabajos
+        actualizarListaTrabajos();
+    }
+
+    // Función para actualizar la lista de trabajos en el HTML
+    function actualizarListaTrabajos() {
+        const listaTrabajos = document.getElementById('lista-trabajos');
+        listaTrabajos.innerHTML = ''; // Limpia la lista antes de actualizarla
+
+        trabajos.forEach((trabajo, index) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `Nombre del Vehículo: ${trabajo.nombre} - Tipo: ${trabajo.tipo} - Fecha de Inicio: ${trabajo.fechaInicio}`;
+            listaTrabajos.appendChild(listItem);
+        });
+    }
+
+    // Agrega un evento de envío al formulario
+    document.getElementById('formulario-trabajo').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Obtiene los valores del formulario
+        const nombre = document.getElementById('nombre-vehiculo').value;
+        const tipo = document.getElementById('tipo-trabajo').value;
+        const descripcion = document.getElementById('descripcion').value;
+        const fechaInicio = document.getElementById('fecha-inicio').value;
+        const fechaFin = document.getElementById('fecha-fin').value;
+
+        // Llama a la función para agregar el trabajo
+        agregarTrabajo(nombre, tipo, descripcion, fechaInicio, fechaFin);
+
+        // Limpia el formulario después de agregar el trabajo
+        document.getElementById('nombre-vehiculo').value = '';
+        document.getElementById('descripcion').value = '';
+        document.getElementById('fecha-inicio').value = '';
+        document.getElementById('fecha-fin').value = '';
+    });
+</script>
+
+    </ul>
+
+    <!-- Script para la gestión de trabajos (se debe incluir JavaScript para interactuar con la lista de trabajos) -->
+    <script>
+        // Aquí puedes agregar JavaScript para manejar la interacción con el formulario y la lista de trabajos.
+    </script>
+</body>
+</html>
+
+
+
+

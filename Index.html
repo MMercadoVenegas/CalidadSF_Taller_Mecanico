@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Taller Mecánico</title>
+</head>
+<body>
+    <h1>Iniciar Sesión - Taller Mecánico</h1>
+
+    <!-- Formulario de inicio de sesión -->
+    <form id="formulario-login">
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario" name="usuario" required>
+        
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" required>
+
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+
+    <!-- Script para la gestión del inicio de sesión -->
+    <script>
+        document.getElementById('formulario-login').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aquí puedes agregar lógica para verificar las credenciales de inicio de sesión.
+            const usuario = document.getElementById('usuario').value;
+            const contrasena = document.getElementById('contrasena').value;
+
+            // Ejemplo de verificación de credenciales (debe personalizarse):
+            if (usuario === 'usuario' && contrasena === 'contrasena') {
+                // Redirigir al usuario a la página de gestión de trabajos.
+                window.location.href = 'Registro_de_Vehiculos.html';
+            } else {
+                alert('Credenciales incorrectas. Por favor, inténtelo de nuevo.');
+            }
+        });
+    </script>
+</body>
+</html>
